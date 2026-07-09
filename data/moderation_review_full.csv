@@ -87,3 +87,4 @@ Virelo,Velero,TRADING,Payments & Markets,virelo.netlify.app,Live-Verified,Bronze
 AgentWill,AgentWill,UTILITY,Autonomous Agents,agentwill.onrender.com,Live-Verified,Bronze,"Live backend monitoring/watcher agent confirmed running, with real API endpoints exposed (/api/heartbeat, /api/watcher).",No web UI - bare backend status text only. Can't assess wallet/SDK depth or craft without inspecting the actual endpoints or repo.
 black,castleblack1,GAME,N/A,app.castleblack.game,Dead,Reject,N/A.,Live URL returns a browser error page (site unreachable).
 UniConnect,dna,SOCIAL,N/A,app.uniconnect.app,Dead,Reject,N/A.,Live URL returns a browser error page (site unreachable).
+SphereVoice,Pawan Labs,DEFI,N/A,sphere-voice.vercel.app,New - Unreviewed,Needs review,N/A.,"Newly submitted since the last check (2026-07-09); not yet live-reviewed for SDK use, security, or craft. Needs manual pass."
