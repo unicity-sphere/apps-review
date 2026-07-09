@@ -1,8 +1,10 @@
-name: Daily submission check
+# Manual-only utility: the moderation API uses a 2-hour wallet-session JWT,
+# so this cannot run unattended on a schedule -- there's no long-lived
+# credential to store as a secret. Trigger manually from the Actions tab
+# right after generating a fresh QUEST_ADMIN_COOKIE token/secret.
+name: Manual submission check
 
 on:
-  schedule:
-    - cron: '0 3 * * *'
   workflow_dispatch: {}
 
 permissions:
