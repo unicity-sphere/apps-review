@@ -84,6 +84,8 @@
   tbody td { padding: 12px; }
   td.name { font-weight: 600; min-width: 150px; }
   td.name .org { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+  td.name a.url-link { display: inline-block; font-weight: 400; color: var(--orange); font-size: 11.5px; margin-top: 4px; text-decoration: none; word-break: break-all; }
+  td.name a.url-link:hover { text-decoration: underline; }
   td.comments { max-width: 380px; font-size: 12.5px; color: #c7cbd1; }
   td.comments .good-txt { color: var(--green); display: block; }
   td.comments .miss-txt { color: #d7a35a; margin-top: 6px; display: block; }
@@ -162,6 +164,11 @@ function badgeClass(tier) {
   return tier.split(' (')[0].replace(/\s+/g, '-').replace(/\//g, '');
 }
 
+function appHref(url) {
+  if (/^https?:\/\//i.test(url)) return url;
+  return 'https://' + url;
+}
+
 function renderStats() {
   const total = DATA.length;
   const live = DATA.filter(d => d.status === 'Live-Verified').length;
@@ -195,7 +202,7 @@ function renderTop5() {
       <div class="track">${d.suggested_track} &middot; ${d.organization}</div>
       <div class="good">${d.good}</div>
       <div class="relevance"><b>Relevance:</b> ${d.relevance_to_criteria}</div>
-      <a class="link" href="https://${d.app_url}" target="_blank" rel="noopener">${d.app_url} ↗</a>
+      <a class="link" href="${appHref(d.app_url)}" target="_blank" rel="noopener">${d.app_url} ↗</a>
     </div>`;
   }).join('');
 }
@@ -222,7 +229,7 @@ function renderTable() {
   document.getElementById('count-line').textContent = `Showing ${rows.length} of ${DATA.length} submissions`;
   document.getElementById('table-body').innerHTML = rows.map(d => `
     <tr>
-      <td class="name">${d.project_name}<span class="org">${d.organization}</span></td>
+      <td class="name">${d.project_name}<span class="org">${d.organization}</span><a class="url-link" href="${appHref(d.app_url)}" target="_blank" rel="noopener">${d.app_url} ↗</a></td>
       <td>${d.category}<br><span class="status-tag">${d.suggested_track}</span></td>
       <td><span class="badge ${badgeClass(d.tier_suggestion)}">${d.tier_suggestion}</span></td>
       <td><span class="status-tag">${d.status}</span></td>
