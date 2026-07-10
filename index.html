@@ -110,6 +110,11 @@
   footer { color: var(--muted); font-size: 12.5px; margin-top: 50px; border-top: 1px solid var(--border); padding-top: 20px; }
   footer a { color: var(--orange); }
   .count-line { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  a.deep-link { margin-left: 6px; font-size: 11px; text-decoration: none; opacity: .55; cursor: pointer; }
+  a.deep-link:hover { opacity: 1; }
+  tr.highlight, .top5-card.highlight { animation: highlight-flash 2s ease; }
+  @keyframes highlight-flash { 0% { background: rgba(255,122,26,.28); } 100% { background: transparent; } }
+  tr[id], .top5-card[id] { scroll-margin-top: 16px; }
 </style>
 </head>
 <body>
@@ -174,6 +179,28 @@ function appHref(url) {
   return 'https://' + url;
 }
 
+function slugify(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-+|-+$)/g, '');
+}
+
+function jumpToApp(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.classList.add('highlight');
+  setTimeout(() => el.classList.remove('highlight'), 2000);
+}
+
+function copyDeepLink(e, slug) {
+  e.preventDefault();
+  e.stopPropagation();
+  const id = 'app-' + slug;
+  const url = location.origin + location.pathname + '#' + id;
+  history.replaceState(null, '', '#' + id);
+  if (navigator.clipboard) { navigator.clipboard.writeText(url).catch(() => {}); }
+  jumpToApp(id);
+}
+
 function renderStats() {
   const total = DATA.length;
   const live = DATA.filter(d => d.status === 'Live-Verified').length;
@@ -202,9 +229,10 @@ function renderTop5() {
     const d = DATA.find(x => x.project_name === name);
     if (!d) return '';
     const builder = TOP5_BUILDER_OVERRIDES[d.project_name] || d.organization;
-    return `<div class="top5-card">
+    const slug = slugify(d.project_name);
+    return `<div class="top5-card" id="app-${slug}">
       <div class="top5-rank">#${i+1} · ${d.tier_suggestion}</div>
-      <h3>${d.project_name}</h3>
+      <h3>${d.project_name}<a class="deep-link" href="#app-${slug}" onclick="copyDeepLink(event,'${slug}')" title="Copy link to this entry">🔗</a></h3>
       <div class="track">${d.suggested_track}</div>
       <div class="built-by"><b>Built by:</b> ${builder}</div>
       <div class="good">${d.good}</div>
@@ -234,9 +262,11 @@ function renderTable() {
     return matchesQ && matchesTier && matchesStatus;
   });
   document.getElementById('count-line').textContent = `Showing ${rows.length} of ${DATA.length} submissions`;
-  document.getElementById('table-body').innerHTML = rows.map(d => `
-    <tr>
-      <td class="name">${d.project_name}<span class="org">${d.organization}</span><a class="url-link" href="${appHref(d.app_url)}" target="_blank" rel="noopener">${d.app_url} ↗</a></td>
+  document.getElementById('table-body').innerHTML = rows.map(d => {
+    const slug = slugify(d.project_name);
+    return `
+    <tr id="app-${slug}">
+      <td class="name">${d.project_name}<a class="deep-link" href="#app-${slug}" onclick="copyDeepLink(event,'${slug}')" title="Copy link to this row">🔗</a><span class="org">${d.organization}</span><a class="url-link" href="${appHref(d.app_url)}" target="_blank" rel="noopener">${d.app_url} ↗</a></td>
       <td>${d.category}<br><span class="status-tag">${d.suggested_track}</span></td>
       <td><span class="badge ${badgeClass(d.tier_suggestion)}">${d.tier_suggestion}</span></td>
       <td><span class="status-tag">${d.status}</span></td>
@@ -246,7 +276,8 @@ function renderTable() {
         <span class="miss-txt"><b>Missing/flags:</b> ${d.missing}</span>
       </td>
     </tr>
-  `).join('');
+  `;
+  }).join('');
 }
 
 renderStats();
@@ -256,6 +287,9 @@ renderTable();
 document.getElementById('search').addEventListener('input', renderTable);
 document.getElementById('tierFilter').addEventListener('change', renderTable);
 document.getElementById('statusFilter').addEventListener('change', renderTable);
+if (location.hash) {
+  setTimeout(() => jumpToApp(location.hash.slice(1)), 150);
+}
 </script>
 </body>
 </html>
