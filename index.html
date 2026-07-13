@@ -307,7 +307,7 @@ function renderTable() {
     return `
     <tr id="app-${slug}">
       <td class="name">${d.project_name}<a class="deep-link" href="#app-${slug}" onclick="copyDeepLink(event,'${slug}')" title="Copy link to this row">🔗</a><span class="org">${d.organization}</span><a class="url-link" href="${appHref(d.app_url)}" target="_blank" rel="noopener">${d.app_url} ↗</a></td>
-      <td>${d.category}<br><span class="status-tag">${d.status}</span></td>
+      <td>${d.category}<br><span class="status-tag">${d.suggested_track}</span></td>
       <td><span class="badge ${badgeClass(d.tier_suggestion)}">${d.tier_suggestion}</span></td>
       <td><span class="status-tag">${d.status}</span></td>
       <td class="relevance">${d.relevance_to_criteria}</td>
