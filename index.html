@@ -141,7 +141,7 @@
   <header>
     <div class="eyebrow">Unicity Sphere SDK · Testnet v2</div>
     <h1>Community App Review — updated 15th July 2026 (WIP)</h1>
-    <p class="sub">Updated pass over the Sphere SDK testnet submissions (originally published 9th July 2026, last updated 15th July 2026). 4 apps have now been awarded and are live on sphere.unicity.network — see below. The remaining 66 apps are still active in the moderation queue (12 newly reviewed this pass, plus the prior 54); rejected, dead, withdrawn, and duplicate submissions have been removed from this view (the moderation portal's own pending count runs higher because several already-rejected entries there haven't been formally closed out yet). Every live URL was checked directly; findings cover functionality, real SDK/wallet usage, craft, originality, and security. No Gold tier has been assigned yet.</p>
+    <p class="sub">Updated pass over the Sphere SDK testnet submissions (originally published 9th July 2026, last updated 15th July 2026). 4 apps have now been awarded and are live on sphere.unicity.network — see below. The remaining 73 apps below match every submission still sitting in the live moderation queue as of this pass (19 newly reviewed this pass, plus the prior 54) — including 7 this reviewer recommends for Reject or Dead status, which stay visible here (filterable by tier/status) rather than being hidden, since they haven't actually been rejected or removed by a moderator yet. Only withdrawn or duplicate submissions, and apps a moderator has already formally processed out of the live queue, are left out of this view. Every live URL was checked directly; findings cover functionality, real SDK/wallet usage, craft, originality, and security. No Gold tier has been assigned yet.</p>
     <div class="stat-row" id="stat-row"></div>
   </header>
 
@@ -158,7 +158,7 @@
   </section>
 
   <section>
-    <h2>Active queue (66 pending submissions)</h2>
+    <h2>Active queue (73 pending submissions)</h2>
     <div class="controls">
       <input type="text" id="search" placeholder="Search by name, org, or URL…">
       <select id="tierFilter"></select>
@@ -183,7 +183,7 @@
   </section>
 
   <footer>
-    Work-in-progress review, originally published 9th July 2026, last updated 14th July 2026. Rejected, dead, and duplicate submissions have been removed from the active queue view above (still on file in the underlying CSV for recordkeeping). Findings here are a starting point for manual review, not final decisions. If you're a builder and think something here is inaccurate, let us know.
+    Work-in-progress review, originally published 9th July 2026, last updated 15th July 2026. This view mirrors the live moderation queue: every submission still pending there appears above, including ones this reviewer recommends for Reject or Dead status (filter by tier/status to see them) — nothing is hidden just because a reviewer disagrees with it. Only withdrawn/duplicate submissions and apps already formally processed out of the moderation queue are left out. Findings here are a starting point for manual review, not final decisions. If you're a builder and think something here is inaccurate, let us know.
   </footer>
 
 </div>
@@ -981,6 +981,90 @@ const DATA = [
     "good": "Unusually well-documented architecture page: a 7-stage agent execution flow (identity init → market scan → opportunity detection → P2P negotiation → escrow creation → atomic swap → settlement) and a clean breakdown of each source module (identity.ts, marketScanner.ts, negotiator.ts, executor.ts, agent.ts). The live-updating agent feed shows realistic, plausible arbitrage/yield log lines with timestamps.",
     "missing": "The page explicitly labels its backend as a 'Local Sphere SDK mock — in-memory ledger' and its live feed as '(Simulation)' — an honest disclosure, but it means nothing shown is actually settling on the real Sphere testnet yet. Already carries 2 rejection votes from other moderators, the most of any new submission reviewed this pass.",
     "relevance_to_criteria": "Strong conceptual and architectural fit for an autonomous DeFi agent on Sphere, but currently a mocked simulation rather than a live demonstration — reads more like a design doc with a working UI than a verified working agent, consistent with this builder's pattern of disclosing rather than hiding limitations."
+  },
+  {
+    "project_name": "UniTics",
+    "organization": "Vaas Corp",
+    "category": "OTHER",
+    "suggested_track": "Open",
+    "app_url": "vaaseth.github.io/Unicity-Analytics/",
+    "status": "Live-Verified",
+    "tier_suggestion": "Reject",
+    "good": "N/A.",
+    "missing": "Static, unstyled Next.js default page (browser tab title left as 'Create Next App') showing a 'Unicity Network Dashboard' with obviously fabricated stats — Block Height 12,450,892, Total Transactions 1.2M+, and two 'Active Agents' listed only as 'Running' / 'Synchronizing' with no further detail or interactivity. No wallet connect, no interactivity of any kind, no visible Sphere SDK usage.",
+    "relevance_to_criteria": "No demonstrable connection to the Sphere SDK or Unicity testnet beyond the project name and static, seemingly-invented numbers. Recommend Reject."
+  },
+  {
+    "project_name": "Test wallet",
+    "organization": "Crypto Testnet",
+    "category": "UTILITY",
+    "suggested_track": "Open",
+    "app_url": "kimiakeramati01.github.io/unicity-wallet/",
+    "status": "Live-Verified",
+    "tier_suggestion": "Reject",
+    "good": "N/A.",
+    "missing": "A generic crypto-wallet marketing template with 'Unicity' branding bolted on: shows fake BTC/ETH/USDT/UNI holdings and a fabricated $28,472.39 balance with a fake +12.7% monthly gain, none of it tied to real UCT or Sphere activity. Layout is broken (horizontal overflow, not responsive). No functioning wallet-connect flow and no observable Sphere SDK usage anywhere.",
+    "relevance_to_criteria": "Displays unrelated tokens (BTC/ETH/USDT/UNI) instead of UCT or any real Sphere primitive — reads as an unmodified wallet-dashboard template. Recommend Reject."
+  },
+  {
+    "project_name": "UniTools Wallet",
+    "organization": "ramino",
+    "category": "TOOL",
+    "suggested_track": "Open",
+    "app_url": "unitools-wallet-final.vercel.app",
+    "status": "Live-Verified",
+    "tier_suggestion": "Reject",
+    "good": "N/A.",
+    "missing": "Same pattern as other low-effort submissions found this pass: a generic multi-chain wallet-dashboard template showing BTC/ETH/USDT/SOL prices, 'No Tokens Found' under Wallet Assets, fabricated transaction history, and even a fake crypto-news feed ('Bitcoin reaches new highs' via CoinDesk). No Sphere SDK, no UCT, no wallet-connect flow, nothing Unicity-specific beyond the project name.",
+    "relevance_to_criteria": "Zero observable relevance to the Sphere SDK or Unicity testnet — an off-the-shelf multi-chain wallet template with no Unicity integration. Recommend Reject."
+  },
+  {
+    "project_name": "Web3 Builder Hub",
+    "organization": "w3bnft",
+    "category": "GAME",
+    "suggested_track": "Games & Gaming",
+    "app_url": "154-12-117-26.sslip.io",
+    "status": "Dead",
+    "tier_suggestion": "Reject / Dead",
+    "good": "N/A.",
+    "missing": "Submitted URL (a raw IP address via sslip.io) fails to load entirely on repeated attempts — a connection/certificate error page, no content reachable.",
+    "relevance_to_criteria": "Cannot be assessed against any criterion — the site does not load. Recommend Reject / Dead."
+  },
+  {
+    "project_name": "Ali",
+    "organization": "Alish",
+    "category": "SOCIAL",
+    "suggested_track": "Social & Messaging",
+    "app_url": "app.gdhnkk.com",
+    "status": "Dead",
+    "tier_suggestion": "Reject / Dead",
+    "good": "N/A.",
+    "missing": "Submitted URL fails to load entirely — returns a browser error page with no content reachable.",
+    "relevance_to_criteria": "Cannot be assessed against any criterion — the site does not load. Recommend Reject / Dead."
+  },
+  {
+    "project_name": "djMetatest",
+    "organization": "djMeta",
+    "category": "GAME",
+    "suggested_track": "Games & Gaming",
+    "app_url": "dj-request-ashy.vercel.app/djclive",
+    "status": "Live-Verified",
+    "tier_suggestion": "Reject",
+    "good": "N/A.",
+    "missing": "Live site is 'DJ Request' — a DJ song-request and tipping app (search a track, tip the DJ via Revolut, Wise, or USDT on the Tron/TRC-20 network) with no mention of Unicity, Sphere, UCT, or any wallet-connect flow anywhere on the page. The submitted category (GAME) doesn't match the actual product either.",
+    "relevance_to_criteria": "No connection whatsoever to the Sphere SDK or Unicity testnet — appears to be an unrelated commercial product submitted to this campaign, possibly in error. Recommend Reject."
+  },
+  {
+    "project_name": "Sentinal",
+    "organization": "Mr RAZOR",
+    "category": "DEFI",
+    "suggested_track": "Payments & Markets",
+    "app_url": "alpha402.vercel.app",
+    "status": "Live-Verified",
+    "tier_suggestion": "Reject",
+    "good": "N/A.",
+    "missing": "The live site identifies itself as 'Alpha402 — Autonomous DeFi Trading Crew,' explicitly built for a different hackathon ('ETHGlobal Open Agents · April 2026') running on Sepolia testnet with Uniswap v4, 0G Storage, Gensyn AXL, KeeperHub, Groq AI, and ENS — with no mention of Unicity or Sphere anywhere on the page. Already carries 2 rejection votes from other moderators, the most of any submission in this pass.",
+    "relevance_to_criteria": "No observable connection to the Sphere SDK or Unicity testnet — this reads as a different hackathon's project submitted here under an unrelated name, possibly by mistake or in bad faith. Recommend Reject, and worth flagging to a moderator directly given the apparent mismatch."
   }
 ];
 const AWARDED = [{"project_name": "Pact", "organization": "solo builder", "handle": "@mora", "category": "Payments + Markets", "app_url": "pact-neon-three.vercel.app", "awarded_tier": "Silver", "award_xp": 2500, "blurb": "Giveaways, bounties, gated inboxes, alpha unlocks, attestations. One signed card each, verified on your device and settled wallet-to-wallet on Unicity.", "why": "Correctly explains Unicity's actual bearer-token/proof-of-uniqueness model in plain language, ships real Sphere wallet connect, signed conditional 'pacts' with templates (bounty, whitelist, escrow, etc.), and explicitly designs for agent use. No server, no custody of funds."}, {"project_name": "Unicity Arcade House", "organization": "KNKCHN", "handle": "@knkchn", "category": "Games", "app_url": "unicity-arcade-house.vercel.app", "awarded_tier": "Silver", "award_xp": 2500, "blurb": "A hall of provably-fair games vs an autonomous house. Bet real testnet UCT, win multipliers, and withdraw on-chain — settled by the agent itself, no human in the loop.", "why": "Polished provably-fair casino concept, explicit testnet2 + Sphere SDK branding, 'no human in the loop, the agent pays you' autonomy claim, real wallet connect gate. Multiple games under one roof (not just a single mechanic)."}, {"project_name": "Sphere 2048", "organization": "Fraey Labs", "handle": "@ƒrαeყ", "category": "Games", "app_url": "sphere-2048.vercel.app", "awarded_tier": "Bronze", "award_xp": 1000, "blurb": "Connect your Sphere wallet, deposit UCT for move credits, and compete on global and weekly leaderboards. 50% of every weekly deposit feeds the prize pool for the top 5 players.", "why": "Best economic design among the 2048 clones (real weekly prize pool funded by deposits) gives it an edge on usefulness and SDK depth versus its near-duplicates, but originality/craft is capped by the underlying game being a well-known template rather than an original mechanic."}, {"project_name": "Sphere Wishing Well", "organization": "Pawan Labs", "handle": "@Pawan Labs", "category": "Social + Messaging", "app_url": "sphere-wishingwell.vercel.app", "awarded_tier": "Bronze", "award_xp": 1000, "blurb": "Cast wishes on Unicity Sphere. Community votes with UCT. Fulfilled or not — the chain decides.", "why": "Reasonable fit to the official prediction-market example idea, giving it credible usefulness and SDK depth (real UCT staking). Autonomy is limited — this is a human-driven staking/voting app, not an autonomous agent — but it's a great simple app."}];
