@@ -140,8 +140,8 @@
 
   <header>
     <div class="eyebrow">Unicity Sphere SDK · Testnet v2</div>
-    <h1>Community App Review — updated 20th July 2026 (WIP)</h1>
-    <p class="sub">Updated pass over the Sphere SDK testnet submissions (originally published 9th July 2026, last updated 20th July 2026). 4 apps have now been awarded and are live on sphere.unicity.network — see below. The remaining 80 apps below match every submission currently sitting in the live moderation queue (15 newly reviewed this pass; zero apps left the queue since the last pass on 17th July, so all 65 previously-tracked apps carry forward unchanged from that review). Only withdrawn or duplicate submissions, and apps a moderator has already processed out of the live queue, are left out of this view — this reviewer's own Reject/Dead recommendations stay visible (filterable by tier/status) until a moderator actually acts on them, including several dead links and one mismatched-URL submission found in this pass. Every live URL was checked directly; findings cover functionality, real SDK/wallet usage, craft, originality, and security. No Gold tier has been assigned yet.</p>
+    <h1>Community App Review — updated 24th July 2026 (WIP)</h1>
+    <p class="sub">Updated pass over the Sphere SDK testnet submissions (originally published 9th July 2026, last updated 24th July 2026). 4 apps have now been awarded and are live on sphere.unicity.network — see below. The remaining 84 apps below match every submission currently sitting in the live moderation queue (4 newly reviewed this pass; zero apps left the queue since the last pass on 20th July). 8 resubmissions with bumped timestamps were also spot-rechecked live this pass — 3 (WatchPay, PumpMeme, MNSR Agent) had material changes worth updating, the other 5 showed consistent or incrementally-grown state with no change to the existing assessment. Only withdrawn or duplicate submissions, and apps a moderator has already processed out of the live queue, are left out of this view — this reviewer's own Reject/Dead recommendations stay visible (filterable by tier/status) until a moderator actually acts on them, including two more dead links and two more mismatched-URL submissions found in this pass. Every live URL was checked directly; findings cover functionality, real SDK/wallet usage, craft, originality, and security. No Gold tier has been assigned yet.</p>
     <div class="stat-row" id="stat-row"></div>
   </header>
 
@@ -158,7 +158,7 @@
   </section>
 
   <section>
-    <h2>Active queue (80 pending submissions)</h2>
+    <h2>Active queue (84 pending submissions)</h2>
     <div class="controls">
       <input type="text" id="search" placeholder="Search by name, org, or URL…">
       <select id="tierFilter"></select>
@@ -183,7 +183,7 @@
   </section>
 
   <footer>
-    Work-in-progress review, originally published 9th July 2026, last updated 20th July 2026. This view mirrors the live moderation queue: every submission still pending there appears above, including ones this reviewer recommends for Reject or Dead status (filter by tier/status to see them) — nothing is hidden just because a reviewer disagrees with it. Only withdrawn/duplicate submissions and apps already formally processed out of the moderation queue are left out. Findings here are a starting point for manual review, not final decisions. If you're a builder and think something here is inaccurate, let us know.
+    Work-in-progress review, originally published 9th July 2026, last updated 24th July 2026. This view mirrors the live moderation queue: every submission still pending there appears above, including ones this reviewer recommends for Reject or Dead status (filter by tier/status to see them) — nothing is hidden just because a reviewer disagrees with it. Only withdrawn/duplicate submissions and apps already formally processed out of the moderation queue are left out. Findings here are a starting point for manual review, not final decisions. If you're a builder and think something here is inaccurate, let us know.
   </footer>
 
 </div>
@@ -977,10 +977,10 @@ const DATA = [
     "suggested_track": "Payments & Markets / Autonomous Agents",
     "app_url": "watchpay.vercel.app",
     "status": "Live-Verified",
-    "tier_suggestion": "Bronze (preliminary)",
-    "good": "Real pay-per-watch micropayment concept: connects a Sphere wallet, claims to deduct real UCT every 30 seconds watched and queue it for an autonomous agent that settles twice daily to creators, with no wallet popup per tick. Discloses a concrete, specific stack (Sphere SDK v0.10.2, QStash agent, Supabase, testnet2 id:4) rather than vague marketing copy.",
-    "missing": "Everything is currently at zero, 0 watching, 0 UCT settled, 0 active sessions, 0 creators earning, and the video catalog itself was stuck on 'LOADING VIDEOS...' during review, so the actual per-second deduction and the twice-daily agent settlement couldn't be observed in practice.",
-    "relevance_to_criteria": "Good conceptual fit for autonomy and SDK depth (disclosed micropayment cadence, QStash-driven settlement agent) but currently unverified in practice, usefulness and craft can't be scored above a provisional level until real watch sessions and a settlement cycle are observed."
+    "tier_suggestion": "Bronze",
+    "good": "Rechecked following resubmission: previously flagged as completely empty (0 everywhere, video catalog stuck loading) is now resolved. The catalog shows 9 real videos with creator handles, view counts, and per-video UCT/30s rates, and the dashboard shows 12.000000 UCT total settled and 2 creators earning — real, specific, non-round numbers rather than placeholders. Concept remains solid: real pay-per-30-seconds micropayments with an autonomous twice-daily settlement agent.",
+    "missing": "Didn't independently connect a wallet and watch a video to trigger a real deduction end-to-end, but the now-populated catalog and non-zero settlement figures are a good sign the mechanism is genuinely wired up.",
+    "relevance_to_criteria": "Good SDK depth and autonomy (disclosed micropayment cadence, agent-driven settlement) now backed by real observed activity rather than an empty state. Promoted from Bronze (preliminary) to Bronze."
   },
   {
     "project_name": "Sphere Duel",
@@ -1037,10 +1037,10 @@ const DATA = [
     "suggested_track": "Payments & Markets",
     "app_url": "pumpmeme-sphere.vercel.app",
     "status": "Live-Verified",
-    "tier_suggestion": "Bronze (preliminary)",
-    "good": "Real memecoin-launchpad concept explicitly built on Unicity testnet2 bonding curves, with claimed autonomous graduation and risk-scoring agents, and an explicit 'all data is real, sourced from Unicity testnet2 on-chain transfers, no mocked or simulated data' disclosure, a good honesty signal if true.",
-    "missing": "0 tokens created, 0 graduated at review time, nothing to verify the bonding-curve or agent claims against yet. The 'View Agents' link on the homepage 404s, so the autonomous risk-scoring agents (a core claimed feature) couldn't be inspected at all.",
-    "relevance_to_criteria": "Good conceptual fit for autonomy and SDK depth (bonding curves, graduation agents) but currently empty of real activity, and the one link meant to demonstrate the autonomous-agent claim is broken, needs a working Agents page and some real launched tokens before this can be scored higher."
+    "tier_suggestion": "Bronze",
+    "good": "Rechecked following resubmission: previously flagged as completely empty (0 tokens created) is now resolved, the marketplace shows 9 real launched memecoins with distinct names, tickers, creator handles, prices, market caps, 24h volume, and graduation-progress percentages, all internally consistent (e.g. higher market cap tokens show proportionally higher graduation progress). This is a meaningful jump from an empty landing page to a populated, plausible-looking bonding-curve market.",
+    "missing": "The homepage's 'View Agents' link still 404s, so the claimed autonomous graduation and risk-scoring agents (a core part of the pitch) still can't be directly inspected, this is the one previously-flagged issue that remains unresolved.",
+    "relevance_to_criteria": "Usefulness and craft are now well-supported by real, populated token data. SDK depth and the autonomy claim specifically still can't be verified since the Agents page is broken, worth a follow-up once that link is fixed. Promoted from Bronze (preliminary) to Bronze given the resolved empty-state issue."
   },
   {
     "project_name": "M3 Signal Desk",
@@ -1143,11 +1143,59 @@ const DATA = [
     "organization": "MNSR Labs",
     "category": "UTILITY",
     "suggested_track": "Autonomous Agents",
-    "app_url": "mnsr-agent.vercel.app",
+    "app_url": "unicity-agent-q6yk.vercel.app",
+    "status": "Live-Verified",
+    "tier_suggestion": "Bronze (preliminary)",
+    "good": "Resubmitted with a new, working URL (the previous mnsr-agent.vercel.app returned a Vercel DEPLOYMENT_NOT_FOUND error). The new deployment loads and, after a few seconds, shows 'Wallet ready' with a real DIRECT:// Sphere address, confirming a genuine wallet identity is wired up.",
+    "missing": "The page is extremely minimal, just a wallet status line, address, and an empty 'Assets' section, with no visible agent logic, task list, or autonomous behavior of any kind, and the browser tab title is still the default 'Create Next App' placeholder rather than being renamed, suggesting an early-stage or barely-started build. No evidence yet of what the agent actually does.",
+    "relevance_to_criteria": "Resolves the prior dead-link eligibility problem and confirms a real wallet identity, but there's nothing yet to assess against autonomy, usefulness, or craft beyond that, needs a much fuller build before it can be scored higher."
+  },
+  {
+    "project_name": "Sphere Connect Demo",
+    "organization": "Pangkeb Studio",
+    "category": "UTILITY",
+    "suggested_track": "Open",
+    "app_url": "picture-islands-periods-course.trycloudflare.com",
     "status": "Dead",
     "tier_suggestion": "Reject / Dead",
     "good": "N/A.",
-    "missing": "The submitted URL returns a Vercel 'DEPLOYMENT_NOT_FOUND' error, no build is currently live at this address.",
+    "missing": "The submitted URL is a Cloudflare Tunnel address (trycloudflare.com), which is ephemeral by design and expires when the builder's local tunnel session ends — it no longer resolves. Ask the builder to deploy to a stable, permanent host instead of a temporary tunnel URL.",
+    "relevance_to_criteria": "Cannot be assessed at all, nothing is currently live at the submitted URL, and the hosting choice itself is not eligible for a lasting public review."
+  },
+  {
+    "project_name": "sepi",
+    "organization": "sepehra",
+    "category": "GAME",
+    "suggested_track": "Open",
+    "app_url": "developers.unicity.network",
+    "status": "Live-Verified",
+    "tier_suggestion": "Unverifiable",
+    "good": "N/A.",
+    "missing": "The submitted URL is Unicity's own official Sphere Developer Portal (developers.unicity.network), not an independently built community project. Same URL-mismatch pattern as other platform-hosted submissions flagged elsewhere in this dataset (Spherequest, hamid_eth2).",
+    "relevance_to_criteria": "Cannot be meaningfully scored as a community submission, the URL points to the campaign's own official developer platform rather than a builder's project."
+  },
+  {
+    "project_name": "hamid_eth2",
+    "organization": "hamid_eth2",
+    "category": "GAME",
+    "suggested_track": "Open",
+    "app_url": "developers.unicity.network",
+    "status": "Live-Verified",
+    "tier_suggestion": "Unverifiable",
+    "good": "N/A.",
+    "missing": "Same as sepi elsewhere in this dataset: the submitted URL is Unicity's own official Sphere Developer Portal, not an independently built project.",
+    "relevance_to_criteria": "Cannot be meaningfully scored as a community submission, the URL points to the campaign's own official developer platform rather than a builder's project."
+  },
+  {
+    "project_name": "Coin Flip UCT",
+    "organization": "Coin Flip UCT",
+    "category": "GAME",
+    "suggested_track": "Games & Gaming",
+    "app_url": "holdermicin.github.io",
+    "status": "Dead",
+    "tier_suggestion": "Reject / Dead",
+    "good": "N/A.",
+    "missing": "The submitted URL returns GitHub Pages' own 404 ('There isn't a GitHub Pages site here') — no site has actually been published at this address.",
     "relevance_to_criteria": "Cannot be assessed at all, nothing is currently live at the submitted URL."
   }
 ];
